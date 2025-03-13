@@ -5,30 +5,29 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'g++ -o hello_exec hello.cpp'  // Compiling hello.cpp
+                    sh 'g++ -o main/hello_exec main/hello.cpp'
                 }
             }
         }
-        
+
         stage('Test') {
             steps {
                 script {
-                    sh './hello_exec'  // Running the compiled program
+                    sh './main/hello_exec'
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
-                sh 'echo Deployment successful!'
+                echo 'Deploying Application (Placeholder)'
             }
         }
     }
 
     post {
         failure {
-            echo 'Pipeline failed. Check the logs for errors!'
+            echo 'Pipeline failed!'
         }
     }
 }
